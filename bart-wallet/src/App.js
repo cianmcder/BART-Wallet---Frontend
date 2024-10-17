@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { Header } from './modules/Header.js';
+import { CreateNewWallet } from './modules/CreateNewWallet.js';
+import { WalletLogin } from './modules/WalletLogin.js';
+import { StationsList } from './modules/StationsList.js';
+import { OriginDestination } from './modules/OriginDestination.js';
+import { Pages } from './modules/Pages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <CreateNewWallet />
+      <WalletLogin />
+      <StationsList />
+      <OriginDestination />
+      <Pages />
     </div>
   );
 }

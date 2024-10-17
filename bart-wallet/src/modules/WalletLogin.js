@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 //see Ch05
-export function CreateNewWallet() {
+export function WalletLogin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     return (
-        <div className="NewWallet">
-            <form onSubmit={create}>
-                <p className="header">Create New Wallet</p>
+        <div className="walletLogin">
+            <form onSubmit={login}>
+                <p className="header">Enter Login Credentials: </p>
                 <input value={username}
                     onChange={(event) =>
                         setUsername(event.target.value)
@@ -23,13 +23,13 @@ export function CreateNewWallet() {
                     type="text"
                     placeholder="Password"
                 />
-                <button>CREATE WALLET</button>
+                <button>LOGIN</button>
             </form>
         </div>
     );
 }
 
-//send info to backend, create new wallet
-function create() {
+//send info to backend, login
+function login() {
 
 }

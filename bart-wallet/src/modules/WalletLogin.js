@@ -8,22 +8,28 @@ export function WalletLogin() {
     return (
         <div className="walletLogin">
             <form onSubmit={login}>
-                <p className="header">Enter Login Credentials: </p>
-                <input value={username}
-                    onChange={(event) =>
-                        setUsername(event.target.value)
-                    }
-                    type="text"
-                    placeholder="Username"
-                />
-                <input value={password}
-                    onChange={(event) =>
-                        setPassword(event.target.value)
-                    }
-                    type="text"
-                    placeholder="Password"
-                />
-                <button>LOGIN</button>
+                <div className="textboxes">
+                    <h2 className="header">Enter Login Credentials: </h2>
+                    <p>Username</p>
+                    <input value={username}
+                        onChange={(event) =>
+                            setUsername(event.target.value)
+                        }
+                        type="text"
+                        placeholder="Username"
+                    />
+                    <p>Password</p>
+                    <input value={password}
+                        onChange={(event) =>
+                            setPassword(event.target.value)
+                        }
+                        type="text"
+                        placeholder="Password"
+                    />
+                </div>
+                <div className="button">
+                    <button>LOGIN</button>
+                </div>
             </form>
         </div>
     );

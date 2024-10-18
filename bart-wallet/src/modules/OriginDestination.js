@@ -1,43 +1,48 @@
-import Dropdown from 'react-bootstrap/Dropdown';
+import { useState } from "react";
 
 export function OriginDestination() {
     //add method to retrieve stations list from backend
     const ex_stations = [
-        { name: "Dublin" },
-        { name: "Pleasanton" },
-        { name: "Fremont"},
+        { name: "Dublin", abbrev: "dbln" },
+        { name: "Pleasanton", abbrev: "plsn" },
+        { name: "Fremont", abbrev: "frmt"},
     ];
 
+    const [origin, setOrigin] = useState("default");
+    const [destination, setDestination] = useState("default");
+
     return (
-        <div class="OriginDestination">
-            <Dropdown id="origin">
-                <Dropdown.Toggle variant="success" id="dropdown-origin">
-                    Origin
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    {ex_stations.map((station) => (
-                        <Dropdown.Item key={station.name}>{station.name}</Dropdown.Item>
-                    ))}
-                </Dropdown.Menu>
-            </Dropdown>
-
-            <Dropdown id="destination">
-                <Dropdown.Toggle variant="success" id="dropdown-destination">
-                    Destination
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    {ex_stations.map((station) => (
-                        <Dropdown.Item key={station.name}>{station.name}</Dropdown.Item>
-                    ))}
-                </Dropdown.Menu>
-            </Dropdown>
-            <button name="getFare" onClick={getFare()}>GET FARE</button>
+        <div className="OriginDestination">
+            <div className="dropdown">
+            <select id="origin" defaultValue="default" onChange={(event) => setOrigin(event.target.value)}>
+                <option value="default" key="origin-default">Origin</option>
+                {ex_stations.map((station) => (
+                    <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
+                ))}
+            </select>
+            <select id="destination" defaultValue="default" onChange={(event) => setDestination(event.target.value)}>
+                <option value="default" key="destination-default">Destination</option>
+                {ex_stations.map((station) => (
+                    <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
+                ))}
+            </select>
+            </div>
+            <div className="button">
+                <button name="getFare" onClick={getFare({ origin, destination })}>GET FARE</button>
+            </div>
         </div>
     );
 }
 
-function getFare() {
-    
+//dev note: for some reason, the function fires off twice when loaded in and whenever the dropdowns change value
+function getFare(props) {
+    if (props.origin === "default") {
+        alert("No origin station specified");
+    } else if (props.destination === "default") {
+        alert("No destination station specified");
+    } else if (props.origin === props.destination) {
+        alert("Origin and destination are the same station");
+    } else {
+        //pull fare info from backend
+    }
 }

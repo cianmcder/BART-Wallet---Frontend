@@ -11,6 +11,8 @@ export function OriginDestination() {
     const [origin, setOrigin] = useState("default");
     const [destination, setDestination] = useState("default");
 
+    //useEffect(() => getFare, []);
+
     return (
         <div className="OriginDestination">
             <div className="dropdown">
@@ -35,6 +37,7 @@ export function OriginDestination() {
 }
 
 //dev note: for some reason, the function fires off twice when loaded in and whenever the dropdowns change value
+// useState , []); ?
 function getFare(props) {
     if (props.origin === "default") {
         alert("No origin station specified");

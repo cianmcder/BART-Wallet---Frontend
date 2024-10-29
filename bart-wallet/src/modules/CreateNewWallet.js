@@ -6,10 +6,10 @@ export function CreateNewWallet() {
     const [password, setPassword] = useState("");
 
     return (
-        <div className="NewWallet">
+        <div id="NewWallet">
             <form onSubmit={create}>
-                <div className="textboxes">
-                    <h2 className="header">Create New Wallet</h2>
+                <div id="textboxes">
+                    <h2 id="header">Create New Wallet</h2>
                     <p>Username</p>
                     <input value={username}
                         onChange={(event) =>
@@ -27,7 +27,7 @@ export function CreateNewWallet() {
                         placeholder="Password"
                     />
                 </div>
-                <div className="button">
+                <div id="button">
                     <button>CREATE WALLET</button>
                 </div>
             </form>

@@ -1,21 +1,39 @@
 import { Link } from "react-router-dom";
 
-export function Header() {
+export function Header(props) {
     return (
         <div>
-            <div className="login">
-                <nav>
-                    <Link to="/login">Login</Link>
-                </nav>
+            <div id="login">
+                { LoggedIn() }
             </div>
-            <div className="header">
+            <div id="header">
                 <h1>BART Wallet React Project</h1>
-                <h2>Page Title</h2>
+                <h2 id="title">{ props.title }</h2>
             </div>
         </div>
     );
 }
 
-//create functions that changes appearance/functionality of "login" depending on whether logged in or not
+//function that changes appearance/functionality of "login" depending on whether logged in or not
+function LoggedIn() {
+    if (localStorage.getItem("Id") === null || localStorage.getItem("Username") === null) {
+        return (
+            <nav>
+                <Link to="/login">Login</Link>
+            </nav>
+        );
+    } else {
+        return (
+            <>
+                <p>Hi { localStorage.getItem("Username") }!</p>
+                <nav>
+                    <Link onClick={ logout() }>Logout</Link>
+                </nav>
+            </>
+        );
+    }
+}
 
-//create function that changes page title based on page
+function logout() {
+    localStorage.clear();
+}

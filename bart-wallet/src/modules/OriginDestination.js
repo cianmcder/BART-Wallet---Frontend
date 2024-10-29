@@ -14,8 +14,8 @@ export function OriginDestination() {
     //useEffect(() => getFare, []);
 
     return (
-        <div className="OriginDestination">
-            <div className="dropdown">
+        <div id="OriginDestination">
+            <div id="dropdown">
             <select id="origin" defaultValue="default" onChange={(event) => setOrigin(event.target.value)}>
                 <option value="default" key="origin-default">Origin</option>
                 {ex_stations.map((station) => (
@@ -29,7 +29,7 @@ export function OriginDestination() {
                 ))}
             </select>
             </div>
-            <div className="button">
+            <div id="button">
                 <button name="getFare" onClick={getFare({ origin, destination })}>GET FARE</button>
             </div>
         </div>
@@ -47,5 +47,6 @@ function getFare(props) {
         alert("Origin and destination are the same station");
     } else {
         //pull fare info from backend
+        //create FareSelect module based on returned info
     }
 }

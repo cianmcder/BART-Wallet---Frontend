@@ -10,7 +10,7 @@ import { Pages } from './modules/Pages';
 function Home() {
   return (
       <div>
-          <Header />
+          <Header title="Home Page" />
           <Pages />
       </div>
   );
@@ -19,7 +19,7 @@ function Home() {
 export function Login() {
   return (
       <div>
-          <Header />
+          <Header title="Login or Sign Up" />
           <Pages />
           <WalletLogin />
           <CreateNewWallet />
@@ -30,7 +30,7 @@ export function Login() {
 export function Stations() {
   return (
       <div>
-          <Header />
+          <Header title="BART Stations" />
           <Pages />
           <StationsList />
       </div>
@@ -40,7 +40,7 @@ export function Stations() {
 export function Fare() {
   return (
       <div>
-          <Header />
+          <Header title="Add Fare to Wallet" />
           <Pages />
           <AddToWallet />
       </div>
@@ -50,7 +50,7 @@ export function Fare() {
 export function Tickets() {
   return (
       <div>
-          <Header />
+          <Header title="Buy Ticket" />
           <Pages />
           <StationsList />
           <OriginDestination />
@@ -59,9 +59,17 @@ export function Tickets() {
 }
 
 export function App() {
+  loginCheck();
   return (
     <div>
       <Home />
     </div>
   );
+}
+
+//when page loads, check backend to see if username has been recently logged in on current device
+function loginCheck() {
+  //does nothing right now
+  //create database object on backend?
+  //int Id, String Username, String MAC, DateTime LastLogin, boolean RememberMe?
 }

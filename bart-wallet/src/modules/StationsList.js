@@ -8,8 +8,8 @@ export function StationsList(props) {
     ];
 
     return (
-        <div className="stationsList">
-            <ul className="list">
+        <div id="stationsList">
+            <ul id="list">
                 {//props.stations.map((station) => (
                 ex_stations.map((station) => (
                     <li key={station.name}>{station.name}</li>

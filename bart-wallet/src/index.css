@@ -1,4 +1,4 @@
-body {
+/*body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,46 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #e7e7e7;
+  background-color: #009ad9;
+}
+
+a {
+  color: #e7e7e7;
+  override-colors: #e7e7e7;
+  padding: 30px;
+}
+
+#header, #OriginDestination {
+  text-align: center;
+}
+
+#NewWallet, #addToWallet {
+  padding: 0 20%;
+}
+
+#button {
+  padding: 10px;
+}
+
+#header, #stationsList, #OriginDestination, #NewWallet, #walletLogin, #AddToWallet, #profile, #FareSelect {
+  color: #000000;
+  background-color: #e7e7e7;
+}
+
+#login {
+  text-align: right;
+}
+
+.sideBySide {
+  display: flex;
+  flex-direction: row;
 }

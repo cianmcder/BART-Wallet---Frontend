@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef } from "react";
+import { FareSelect } from "./FareSelect";
 
 export function OriginDestination() {
     //add method to retrieve stations list from backend
@@ -8,45 +9,50 @@ export function OriginDestination() {
         { name: "Fremont", abbrev: "frmt"},
     ];
 
-    const [origin, setOrigin] = useState("default");
-    const [destination, setDestination] = useState("default");
-
-    //useEffect(() => getFare, []);
+    const origin = useRef();
+    const destination = useRef();
 
     return (
         <div id="OriginDestination">
-            <div id="dropdown">
-            <select id="origin" defaultValue="default" onChange={(event) => setOrigin(event.target.value)}>
-                <option value="default" key="origin-default">Origin</option>
-                {ex_stations.map((station) => (
-                    <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
-                ))}
-            </select>
-            <select id="destination" defaultValue="default" onChange={(event) => setDestination(event.target.value)}>
-                <option value="default" key="destination-default">Destination</option>
-                {ex_stations.map((station) => (
-                    <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
-                ))}
-            </select>
-            </div>
-            <div id="button">
-                <button name="getFare" onClick={getFare({ origin, destination })}>GET FARE</button>
-            </div>
+            <form id="dropdown-form" onSubmit={() => {
+                const ori = origin.current.value;
+                const des = destination.current.value;
+                getFare({ ori, des });
+            }}>
+                <div id="dropdown">
+                    <select id="origin" title="origin" ref={origin} defaultValue="default">
+                        <option value="default" key="origin-default">Origin</option>
+                        {ex_stations.map((station) => (
+                            <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
+                        ))}
+                    </select>
+                    <select id="destination" title="destination" ref={destination} defaultValue="default">
+                        <option value="default" key="destination-default">Destination</option>
+                        {ex_stations.map((station) => (
+                            <option value={station.abbrev} key={station.abbrev}>{station.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <div id="button">
+                    <button name="getFare">GET FARE</button>
+                </div>
+            </form>
         </div>
     );
 }
 
-//dev note: for some reason, the function fires off twice when loaded in and whenever the dropdowns change value
-// useState , []); ?
 function getFare(props) {
-    if (props.origin === "default") {
+    if (props.ori === "default") {
         alert("No origin station specified");
-    } else if (props.destination === "default") {
+    } else if (props.des === "default") {
         alert("No destination station specified");
-    } else if (props.origin === props.destination) {
-        alert("Origin and destination are the same station");
+    } else if (props.ori === props.des) {
+        alert(`Origin and destination are the same station: ORIGIN = ${props.ori}, DESTINATION = ${props.des}`);
     } else {
         //pull fare info from backend
-        //create FareSelect module based on returned info
+
+        //create FareSelect module based on returned info?
+        return <FareSelect fares={ null } origin={ props.ori } destination={ props.des } />;
+        //or create new page for the purpose of purchasing tickets?
     }
 }

@@ -9,7 +9,7 @@ export function WalletLogin() {
         <div id="walletLogin">
             <form onSubmit={login}>
                 <div id="textboxes">
-                    <h2 id="header">Enter Login Credentials: </h2>
+                    <h2>Enter Login Credentials: </h2>
                     <p>Username</p>
                     <input value={username}
                         onChange={(event) =>

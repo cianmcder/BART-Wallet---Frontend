@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 export function AddToWallet() {
-    const [funds, setFunds] = useState(0.00);
+    const funds = useRef(0.00);
 
     return (
         <div id="AddToWallet">
-            <form onSubmit={addFunds({ funds })}>
+            <form onSubmit={addFunds(() => {
+                const f = funds.current.value;
+                addFunds({ f });
+            })}>
                 <div id="textboxes">
                     <h2 id="header">Enter funds to add:</h2>
-                    <input type="number" onChange={ (event) => setFunds(event.target.value) }
-                        placeholder={0.00} />
+                    <input type="number" ref={funds} />
                 </div>
                 <div id="button">
                     { loginCheck() }
@@ -20,7 +22,7 @@ export function AddToWallet() {
 }
 
 function addFunds(props) {
-    if (props.funds === 0) {
+    if (props.funds <= 0) {
         alert("Please select a non-zero amount");
     } else {
         //add funds to wallet via backend

@@ -9,7 +9,7 @@ export function CreateNewWallet() {
         <div id="NewWallet">
             <form onSubmit={create}>
                 <div id="textboxes">
-                    <h2 id="header">Create New Wallet</h2>
+                    <h2>Create New Wallet</h2>
                     <p>Username</p>
                     <input value={username}
                         onChange={(event) =>

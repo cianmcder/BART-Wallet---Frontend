@@ -6,6 +6,7 @@ import { AddToWallet } from './modules/AddToWallet.js';
 import { StationsList } from './modules/StationsList.js';
 import { OriginDestination } from './modules/OriginDestination.js';
 import { Pages } from './modules/Pages';
+import { WalletProfile } from './modules/WalletProfile.js';
 
 function Home() {
   return (
@@ -21,8 +22,10 @@ export function Login() {
       <div>
           <Header title="Login or Sign Up" />
           <Pages />
-          <WalletLogin />
-          <CreateNewWallet />
+          <div className="sideBySide">
+            <WalletLogin />
+            <CreateNewWallet />
+          </div>
       </div>
   );
 }
@@ -34,6 +37,16 @@ export function Stations() {
           <Pages />
           <StationsList />
       </div>
+  );
+}
+
+export function Profile() {
+  return (
+    <div>
+      <Header title="Profile" />
+      <Pages />
+      <WalletProfile />
+    </div>
   );
 }
 

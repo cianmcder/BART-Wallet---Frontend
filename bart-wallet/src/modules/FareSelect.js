@@ -3,12 +3,13 @@ export function FareSelect(props) {
     if (props.fares != null) {
         return (
             <div id="FareSelect">
-                <div id="radio">
-                    {props.fares.map((fare) => (
-                        <input type="radio" value={fare.price} name={fare.type} />
-                    ))}
-                </div>
-                { loginCheck }
+                <h2>Available tickets for transfer from { props.origin } to { props.destination }</h2>
+                    <div id="radio">
+                        {props.fares.map((fare) => (
+                            <input type="radio" value={ fare.price } name={ fare.type } />
+                        ))}
+                    </div>
+                    { loginCheck }
             </div>
         );
     } else {
@@ -27,7 +28,7 @@ function loginCheck() {
         );
     } else {
         return (
-            <div id="button" onClick={addTicket}>
+            <div id="button" onClick={ addTicket }>
                 PURCHASE TICKET
             </div>
         );

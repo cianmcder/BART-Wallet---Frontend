@@ -19,6 +19,7 @@ function loginCheck() {
     } else {
         return (
             <>
+                <Link to="/profile">Profile</Link>
                 <Link to="/fare">Fare</Link>
                 <Link to="/tickets">Tickets</Link>
             </>
